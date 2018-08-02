@@ -1,3 +1,5 @@
+# Import packages you need here,
+# and remember to also declare them in the requirements.txt file.
 import json
 import os
 import io
@@ -9,9 +11,10 @@ from bokeh.embed import components
 from bokeh.plotting import figure, output_file, show
 from bokeh.layouts import gridplot
 from bokeh.models import HoverTool
-from flask import Flask, Response, render_template #, jsonify, request, send_file
+from flask import Flask, Response, render_template
 from ibm_botocore.client import Config
 
+#network setup
 PORT = os.getenv('PORT', '5000')
 app = Flask(__name__)
 
@@ -20,6 +23,7 @@ if 'VCAP_APPLICATION' in os.environ:
     appinfo = json.loads(os.environ['VCAP_APPLICATION'])
     thehost = "https://" + appinfo['application_uris'][0]
 
+#insert your object storage service credential here
 cos_credentials={
   "apikey": "owOXY_6U6vFRl7sKIFPjA-4zccGwzSfOjxN46qAHiR3C",
   "endpoints": "https://cos-service.bluemix.net/endpoints",
@@ -94,8 +98,6 @@ def test2(container, filename):
     script, div = components(p)
     return render_template('plot.html', script = script, div = div)
 
-def MakeJSONMsgResponse(themsg, statuscode):
-    return Response(json.dumps(themsg), mimetype='application/json', status=statuscode)
-
+#debug is turned on here so that you can see the track of the error (500 Internal error when debug=False)
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(PORT), threaded=True, debug=True)
