@@ -1,0 +1,8 @@
+applications:
+- name: cos-test
+  path: .
+  memory: 256M
+  instances: 1
+  random-route: true
+  disk_quota: 256M
+  buildpack: python_buildpack
