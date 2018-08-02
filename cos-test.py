@@ -25,13 +25,7 @@ if 'VCAP_APPLICATION' in os.environ:
 
 #insert your object storage service credential here
 cos_credentials={
-  "apikey": "owOXY_6U6vFRl7sKIFPjA-4zccGwzSfOjxN46qAHiR3C",
-  "endpoints": "https://cos-service.bluemix.net/endpoints",
-  "iam_apikey_description": "Auto generated apikey during resource-key operation for Instance - crn:v1:bluemix:public:cloud-object-storage:global:a/097c683a217b44dc98831680a2a442a6:6e53fcba-8bc8-4940-9fc0-0bd2836aef60::",
-  "iam_apikey_name": "auto-generated-apikey-b1382273-10e9-4755-8a53-b9df84188957",
-  "iam_role_crn": "crn:v1:bluemix:public:iam::::serviceRole:Writer",
-  "iam_serviceid_crn": "crn:v1:bluemix:public:iam-identity::a/097c683a217b44dc98831680a2a442a6::serviceid:ServiceId-731701f4-f3c8-4d41-9298-d9c99a916cf0",
-  "resource_instance_id": "crn:v1:bluemix:public:cloud-object-storage:global:a/097c683a217b44dc98831680a2a442a6:6e53fcba-8bc8-4940-9fc0-0bd2836aef60::"
+
 }
 
 auth_endpoint = 'https://iam.bluemix.net/oidc/token'
