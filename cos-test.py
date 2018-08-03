@@ -25,7 +25,7 @@ if 'VCAP_APPLICATION' in os.environ:
 
 #insert your object storage service credential here
 cos_credentials={
-
+ 
 }
 
 auth_endpoint = 'https://iam.bluemix.net/oidc/token'
@@ -44,7 +44,7 @@ def GetObjStoreInfo():
 def GetObjStoContainerInfo(container):
     cos = ibm_boto3.client('s3',ibm_api_key_id=cos_credentials['apikey'],ibm_service_instance_id=cos_credentials['resource_instance_id'],ibm_auth_endpoint=auth_endpoint,config=Config(signature_version='oauth'),endpoint_url=service_endpoint)
     bucs = []
-    for data in cos.list_objects(Bucket = "testbucketyu")['Contents']:
+    for data in cos.list_objects(Bucket = container)['Contents']:
         data['downloadURL'] = thehost + "/" + container + "/" + data['Key']
         bucs.append(data)
     return render_template('table.html', objs = bucs, container = container)
